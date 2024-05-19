@@ -1,9 +1,9 @@
-name: NorthClient
+name: LykCloud
 defaulttheme: NorthClientTheme
-logo: https://media.discordapp.net/attachments/984837636457918465/1000014634012647464/giphy.gif
+logo: https://cdn.discordapp.com/icons/1186648150027554937/f3c47770ea7388dc6a150f0fd0b4d924.png
 version: 2.0.0
 website:
-  port: 9000
+  port: 4000
   secret: Example Secret
 
 data:
@@ -27,12 +27,12 @@ guildblacklist:
   - ServerID
 
 pterodactyl: ##go to ur panel get a api
-  domain: https://panel.example.de
-  key: ptla_yourexamplepteroapi
+  domain: https://panel.lykcloud.me
+  key: ptlc_5MDRmACV5hwWfY5djiTIu0arV0TUj6hsimkSXQLcENA
 
 AFK Party: 
-  enabled: false
-  webhook: https://discord.com/api/webhooks/example/example
+  enabled: true
+  webhook: https://discord.com/api/webhooks/1241628236123869254/MCva8okk9sLCUwLYaJPKW7IQoYd6HouMa7SVybqWP9EbQat9dUP5_czW85W5og2WXXtB
   users: 25
   multiplier: 2	
 
@@ -47,7 +47,7 @@ changelog:
     sent: sent 20.07.2022
 
 linkvertise: ##go to https://publisher.linkvertise.com/ to get ur userid
-  enabled: true
+  enabled: false
   userid: 00000
   coins: 25
 
@@ -56,7 +56,7 @@ status:
   script: https://example.com
 
 stripe:
-  enabled: true  
+  enabled: false
   key: 0000000000 # Replace this with your Stripe API Key
   coins: 200 # Coins per amount in USD
   amount: 1
@@ -74,7 +74,7 @@ api:
     key: API KEY
   client:
     j4r: 
-      enabled: true
+      enabled: false
       ads:
       - name: Example Server 1
         id: 984837635879104602
@@ -100,19 +100,19 @@ api:
         RoleID: Package Name 
 
     bot:
-      token: Example Token
+      token: MTE4ODcwNzI5NDQwMjMxNDMyMg.GBrBC6.VYuzSwzXZ359Z5oYlWkWSq2H_oKmtrl7Z9NAfc
       joinguild:
-        enabled: false
+        enabled: true
         guildid:
+        - 1186648150027554937
         - SERVERID
-        - SERVERID
-        forcejoin: false
+        forcejoin: true
         registeredrole: ""
 
     webhook:
-      webhook_url: Example URL
+      webhook_url: https://discord.com/api/webhooks/1241628236123869254/MCva8okk9sLCUwLYaJPKW7IQoYd6HouMa7SVybqWP9EbQat9dUP5_czW85W5og2WXXtB
       auditlogs:
-        enabled: false
+        enabled: true
         disabled: []
 
     passwordgenerator:
@@ -134,70 +134,52 @@ api:
         cost: 0
 
     oauth2:
-      id: "Ur ID"
-      secret: "Your Secret API"
-      link: "Your Domain"
+      id: "1188707294402314322"
+      secret: "NdyOI5JTPFuDDEeuHNHzT_v9qJCLlprO"
+      link: "https://dash.lykcloud.me"
       callbackpath: "/callback"
       prompt: true
 
       ip:
         trust x-forwarded-for: true
         block: []
-        duplicate check: false
+        duplicate check: true
 
     packages:
       default: default
       list:
         default:
-          ram: 1024
-          disk: 1024
-          cpu: 100
+          ram: 2024
+          disk: 5024
+          cpu: 120
           servers: 1
-          databases: 2
-          allocations: 2
-          backups: 2
+          databases: 1
+          allocations: 1
+          backups: 1
 
     locations:
       '1':
-        name: Node01
-        package: null
+        name: Europe
+        package: default
+      '2':
+        name: Europe2
+        package: default
 
     eggs:
-      paper:
-        display: Minecraft Java
+      Linux-VM:
+        display: Linux VM
         minimum:
-          ram: 1024
-          disk: 1024
+          ram: 2024
+          disk: 5024
           cpu: 100
         maximum:
-          ram: 2000
-          disk: 2000
-          cpu: 2000
-        info:
-          egg: 3
-          docker_image: ghcr.io/pterodactyl/yolks:java_17
-          startup: java -Xms128M -Xmx{{SERVER_MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true
-            -jar {{SERVER_JARFILE}}
-          environment:
-            SERVER_JARFILE: server.jar
-            BUILD_NUMBER: latest
-          feature_limits:
-            databases: 4
-            backups: 4
-      discord.js generic:
-        display: Discordjsgeneric
-        minimum:
-          ram: 512
-          disk: 512
-          cpu: 0
-        maximum:
-          ram: 2000
-          disk: 2000
-          cpu: 2000
+          ram: 4024
+          disk: 10024
+          cpu: 120
         info:
           egg: 15
-          docker_image: ghcr.io/parkervcp/yolks:nodejs_17
-          startup: if [[ -d .git ]] && [[ {{AUTO_UPDATE}} == "1" ]]; then git pull; fi; if [[ ! -z ${NODE_PACKAGES} ]]; then /usr/local/bin/npm install ${NODE_PACKAGES}; fi; if [[ ! -z ${UNNODE_PACKAGES} ]]; then /usr/local/bin/npm uninstall ${UNNODE_PACKAGES}; fi; if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; /usr/local/bin/node /home/container/{{BOT_JS_FILE}}
+          docker_image: quay.io/ydrag0n/pterodactyl-vps-egg
+          startup: bash install.sh
           feature_limits:
             databases: 4
             backups: 4
